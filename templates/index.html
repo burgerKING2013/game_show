@@ -1,102 +1,35 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Choose Player</title>
+  <meta charset="UTF-8">
+  <title>Game Show - Choose Player</title>
   <style>
-    :root{
-      --bg: #0f172a;
-      --card: #0b1220;
-      --accent: #6ee7b7;
-      --accent-2: #60a5fa;
-      --text: #e6eef8;
-    }
-
-    html,body{
-      height:100%;
-      margin:0;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: linear-gradient(180deg,#071023 0%, #081025 100%);
-      color:var(--text);
-    }
-
-    /* center container full screen */
-    .center {
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:2rem;
-      box-sizing:border-box;
-    }
-
-    .btn-row {
-      display:flex;
-      gap:2rem;
-      align-items:center;
-      justify-content:center;
-      flex-wrap:wrap;
-    }
-
-    /* big round button (anchor used as button) */
-    .btn {
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:220px;
-      height:220px;
-      text-decoration:none;
-      border-radius:50%;
-      font-size:1.6rem;
-      font-weight:700;
-      letter-spacing:0.6px;
-      color:var(--card);
-      background:linear-gradient(135deg,var(--accent) 0%, var(--accent-2) 100%);
-      box-shadow: 0 12px 30px rgba(2,6,23,0.6), inset 0 -6px 18px rgba(255,255,255,0.04);
-      border: none;
-      transition: transform 160ms ease, box-shadow 160ms ease;
-      -webkit-tap-highlight-color: transparent;
-      user-select: none;
-    }
-
-    .btn:active { transform: translateY(2px) scale(.995); }
-    .btn:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 40px rgba(2,6,23,0.7); }
-
-    /* different color for player 2 */
-    .btn.p2 { background: linear-gradient(135deg,#ffb86b 0%, #ff7b7b 100%); color: #1b1220; }
-
-    /* small caption under buttons (optional) */
-    .caption {
-      margin-top:1.25rem;
-      text-align:center;
-      color: #9fb0c9;
-      font-size:0.95rem;
-    }
-
-    /* accessibility focus outline */
-    .btn:focus {
-      outline: 4px solid rgba(255,255,255,0.08);
-      outline-offset: 6px;
-      box-shadow: 0 0 0 6px rgba(96,165,250,0.12);
-    }
-
-    @media (max-width:520px){
-      .btn { width:160px; height:160px; font-size:1.2rem; }
-      .btn-row { gap:1rem; }
-    }
+    body { font-family: Arial, sans-serif; text-align: center; background: #f4f4f4; }
+    h1 { color: #333; margin-top: 50px; }
+    .buttons { display: flex; justify-content: center; gap: 50px; margin-top: 50px; }
+    .player { border: 2px solid #333; padding: 30px; background: #fff; border-radius: 15px; }
+    button { font-size: 20px; padding: 15px 40px; margin: 10px; cursor: pointer; border-radius: 10px; }
+    .green { background: seagreen; color: white; }
+    .red { background: crimson; color: white; }
+    .caption { margin-top: 30px; font-size: 18px; color: #555; }
   </style>
 </head>
 <body>
-  <main class="center" role="main">
-    <div>
-      <div class="btn-row" role="group" aria-label="Choose player">
-        <a class="btn p1" href="/p1" role="button" aria-label="Player 1">Player 1</a>
-        <a class="btn p2" href="/p2" role="button" aria-label="Player 2">Player 2</a>
-      </div>
 
-      <p class="caption">Tap a player to continue</p>
-    </div>
-  </main>
+<h1>Game Show</h1>
+
+<div class="buttons">
+  <div class="player">
+    <h2>Player 1</h2>
+    <a href="/p1"><button class="green">Enter</button></a>
+  </div>
+  <div class="player">
+    <h2>Player 2</h2>
+    <a href="/p2"><button class="green">Enter</button></a>
+  </div>
+</div>
+
+<p class="caption">Click your player to start the game!</p>
+
 </body>
 </html>
