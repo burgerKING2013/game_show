@@ -34,6 +34,17 @@ def setc2(c2):
     choice2 = c2
     return check_run()
 
+@app.route('/reset', methods=["POST"])
+def reset():
+    global s1, s2, round_number, last_choice1, last_choice2, ok
+    s1 = 0
+    s2 = 0
+    round_number = 0
+    last_choice1 = ''
+    last_choice2 = ''
+    ok = False
+    return jsonify(success=True)
+
 def check_run():
     global s1, s2, choice1, choice2, last_choice1, last_choice2, ok, round_number
     if choice1 != '' and choice2 != '':

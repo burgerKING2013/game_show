@@ -11,7 +11,8 @@
     button { font-size: 20px; padding: 15px 40px; margin: 10px; cursor: pointer; border-radius: 10px; }
     .green { background: seagreen; color: white; }
     .red { background: crimson; color: white; }
-    .caption { margin-top: 30px; font-size: 18px; color: #555; }
+    .scoreboard { margin-top: 30px; font-size: 20px; }
+    .reset-btn { margin-top: 20px; background: #555; color: white; border-radius: 10px; padding: 10px 20px; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -29,7 +30,37 @@
   </div>
 </div>
 
-<p class="caption">Click your player to start the game!</p>
+<div class="scoreboard">
+  <p>Round: <span id="round">0</span></p>
+  <p>Player 1 Score: <span id="score1">0</span></p>
+  <p>Player 2 Score: <span id="score2">0</span></p>
+  <p>Last Choices: <span id="choices">-</span></p>
+</div>
+
+<button class="reset-btn" onclick="resetRound()">Reset Round</button>
+
+<script>
+async function updateStatus() {
+  let res = await fetch('/status');
+  let data = await res.json();
+  document.getElementById("score1").innerText = data.s1;
+  document.getElementById("score2").innerText = data.s2;
+  document.getElementById("round").innerText = data.round;
+  if(data.ok){
+    document.getElementById("choices").innerText = 
+      `Player 1: ${data.last_choice1}, Player 2: ${data.last_choice2}`;
+  } else {
+    document.getElementById("choices").innerText = '-';
+  }
+}
+
+function resetRound() {
+  fetch('/reset', { method: 'POST' });
+}
+
+setInterval(updateStatus, 500);
+updateStatus();
+</script>
 
 </body>
 </html>
