@@ -49,6 +49,10 @@ async function updateStatus() {
   } else {
     document.getElementById("choices").innerText = '-';
   }
+  if (data.round > 30) {
+    document.getElementById("message").innerText = "Game Over!";
+    return;
+  }
 }
 
 setInterval(updateStatus, 500);
